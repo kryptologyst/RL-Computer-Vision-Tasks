@@ -1,0 +1,35 @@
+# Configuration for MNIST classification task (simpler baseline)
+
+# Environment settings
+task_type: "classification"
+dataset: "mnist"
+image_size: [28, 28]
+max_steps: 50
+reward_type: "dense"
+
+# Agent settings
+algorithm: "double_dqn"  # Use Double DQN for MNIST
+learning_rate: 1.0e-3
+gamma: 0.99
+epsilon_start: 1.0
+epsilon_end: 0.01
+epsilon_decay: 0.995
+buffer_size: 20000
+batch_size: 32
+target_update_freq: 100
+
+# Training settings
+num_episodes: 1000
+eval_freq: 50
+num_eval_episodes: 20
+save_freq: 200
+
+# Device and reproducibility
+device: "auto"
+seed: 42
+
+# Logging and saving
+log_dir: "./logs/mnist"
+save_dir: "./checkpoints/mnist"
+use_wandb: false
+project_name: "rl-computer-vision-mnist"

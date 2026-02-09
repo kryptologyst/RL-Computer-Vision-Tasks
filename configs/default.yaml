@@ -1,0 +1,47 @@
+# Default configuration for RL Computer Vision training
+
+# Environment settings
+task_type: "classification"  # classification, detection, navigation
+dataset: "cifar10"  # cifar10, mnist, synthetic
+image_size: [32, 32]
+max_steps: 100
+reward_type: "dense"  # sparse, dense, shaped
+
+# Agent settings
+algorithm: "dqn"  # dqn, double_dqn, prioritized_dqn, dueling_dqn, rainbow_dqn
+learning_rate: 1.0e-4
+gamma: 0.99
+epsilon_start: 1.0
+epsilon_end: 0.01
+epsilon_decay: 0.995
+buffer_size: 10000
+batch_size: 32
+target_update_freq: 100
+
+# Training settings
+num_episodes: 1000
+eval_freq: 100
+num_eval_episodes: 10
+save_freq: 500
+
+# Device and reproducibility
+device: "auto"  # auto, cpu, cuda, mps
+seed: 42
+
+# Logging and saving
+log_dir: "./logs"
+save_dir: "./checkpoints"
+use_wandb: false
+project_name: "rl-computer-vision"
+
+# Advanced settings (for specific algorithms)
+# Prioritized Replay
+alpha: 0.6
+beta_start: 0.4
+beta_end: 1.0
+beta_decay: 0.995
+
+# Rainbow DQN
+num_atoms: 51
+v_min: -10.0
+v_max: 10.0

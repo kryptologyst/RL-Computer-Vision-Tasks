@@ -1,0 +1,44 @@
+# Configuration for CIFAR-10 classification task
+
+# Environment settings
+task_type: "classification"
+dataset: "cifar10"
+image_size: [32, 32]
+max_steps: 50
+reward_type: "dense"
+
+# Agent settings
+algorithm: "rainbow_dqn"  # Use Rainbow DQN for better performance
+learning_rate: 5.0e-4
+gamma: 0.99
+epsilon_start: 1.0
+epsilon_end: 0.05
+epsilon_decay: 0.999
+buffer_size: 50000
+batch_size: 64
+target_update_freq: 200
+
+# Training settings
+num_episodes: 2000
+eval_freq: 50
+num_eval_episodes: 20
+save_freq: 200
+
+# Device and reproducibility
+device: "auto"
+seed: 42
+
+# Logging and saving
+log_dir: "./logs/cifar10"
+save_dir: "./checkpoints/cifar10"
+use_wandb: true
+project_name: "rl-computer-vision-cifar10"
+
+# Rainbow DQN specific settings
+num_atoms: 51
+v_min: -10.0
+v_max: 10.0
+alpha: 0.6
+beta_start: 0.4
+beta_end: 1.0
+beta_decay: 0.999
